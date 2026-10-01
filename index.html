@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f2ec">
+  <meta name="description" content="Baixe gratuitamente o ebook do casal TK. Deixe seus dados para receber o material por e-mail.">
+  <title>Ebook gratuito | casal TK</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #241b1b;
+      --muted: #6e6260;
+      --paper: #f7f2ec;
+      --card: #fffdfa;
+      --wine: #7b263b;
+      --wine-dark: #5e1b2d;
+      --peach: #f1d9ca;
+      --line: #e7ddd5;
+      --green: #42624d;
+      --shadow: 0 24px 70px rgba(61, 34, 36, .11);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 15%, rgba(241, 217, 202, .58), transparent 32rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    header { padding: 24px 0; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: -.04em; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 13px; background: var(--wine); color: white; font-size: 15px; letter-spacing: -.08em; }
+    .brand-name { font-size: 18px; }
+    .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(40px, 8vw, 100px); align-items: center; padding: clamp(38px, 7vw, 82px) 0 90px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; color: var(--wine); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+    h1 { max-width: 640px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(44px, 6vw, 76px); font-weight: 500; letter-spacing: -.055em; line-height: .99; }
+    h1 em { color: var(--wine); font-weight: 500; }
+    .intro { max-width: 530px; margin: 24px 0 0; color: var(--muted); font-size: clamp(16px, 1.7vw, 19px); }
+    .points { display: grid; gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }
+    .points li { display: flex; align-items: flex-start; gap: 11px; color: #493e3c; font-size: 15px; }
+    .check { flex: 0 0 22px; display: grid; place-items: center; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: #e8eee7; color: var(--green); font-size: 13px; font-weight: 900; }
+    .visual { position: relative; min-height: 490px; display: grid; place-items: center; }
+    .glow { position: absolute; width: min(410px, 88%); aspect-ratio: 1; border-radius: 50%; background: var(--peach); opacity: .7; }
+    .book { position: relative; width: min(300px, 76%); min-height: 390px; display: flex; flex-direction: column; justify-content: space-between; padding: 29px; overflow: hidden; border-radius: 5px 16px 16px 5px; color: #fff7ef; background: linear-gradient(145deg, #8b3546, #552135 78%); box-shadow: 22px 24px 0 rgba(91, 43, 49, .13), var(--shadow); transform: rotate(-4deg); }
+    .book::before { content: ""; position: absolute; top: 0; bottom: 0; left: 17px; width: 1px; background: rgba(255,255,255,.22); }
+    .book::after { content: "♥"; position: absolute; right: -16px; bottom: 58px; color: rgba(255,255,255,.09); font-size: 150px; line-height: 1; transform: rotate(-15deg); }
+    .book-top, .book-bottom, .book-copy { position: relative; z-index: 1; }
+    .book-top { padding-left: 7px; font-size: 10px; font-weight: 800; letter-spacing: .19em; text-transform: uppercase; }
+    .book-copy { padding-left: 7px; }
+    .book-copy small { display: block; margin-bottom: 13px; color: #f1c9bd; font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .book-copy strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: clamp(32px, 4vw, 43px); font-weight: 500; line-height: 1.02; letter-spacing: -.045em; }
+    .book-copy span { display: block; max-width: 190px; margin-top: 14px; color: #f4e5de; font-size: 12px; }
+    .book-bottom { padding-left: 7px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .stamp { position: absolute; right: 2%; bottom: 7%; display: grid; place-items: center; width: 92px; height: 92px; border: 1px solid rgba(123,38,59,.45); border-radius: 50%; color: var(--wine); font-family: Georgia, serif; font-size: 13px; line-height: 1.1; text-align: center; transform: rotate(10deg); }
+    .form-card { position: relative; z-index: 2; max-width: 510px; margin: 0 auto; padding: clamp(24px, 4vw, 38px); border: 1px solid rgba(231,221,213,.9); border-radius: 22px; background: var(--card); box-shadow: var(--shadow); }
+    .form-card h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 29px; font-weight: 500; letter-spacing: -.035em; }
+    .form-card > p { margin: 8px 0 24px; color: var(--muted); font-size: 14px; }
+    form { display: grid; gap: 14px; }
+    label.field { display: grid; gap: 6px; color: #493e3c; font-size: 12px; font-weight: 750; }
+    input[type="text"], input[type="email"], input[type="tel"] { width: 100%; min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; outline: none; background: #fff; color: var(--ink); font: inherit; font-size: 14px; transition: border-color .2s, box-shadow .2s; }
+    input:focus { border-color: var(--wine); box-shadow: 0 0 0 3px rgba(123,38,59,.12); }
+    .consents { display: grid; gap: 11px; margin: 3px 0; }
+    .consent { display: flex; align-items: flex-start; gap: 9px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .consent input { flex: 0 0 auto; width: 15px; height: 15px; margin: 1px 0 0; accent-color: var(--wine); }
+    .consent a { color: var(--wine); }
+    button { width: 100%; min-height: 52px; margin-top: 2px; border: 0; border-radius: 11px; background: var(--wine); color: white; font: inherit; font-size: 14px; font-weight: 800; cursor: pointer; transition: transform .2s, background .2s; }
+    button:hover { background: var(--wine-dark); transform: translateY(-1px); }
+    button:disabled { opacity: .65; cursor: wait; transform: none; }
+    .honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+    .secure-note { margin: 12px 0 0 !important; color: #8a7d79 !important; font-size: 10px !important; text-align: center; }
+    .notice { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: 13px; }
+    .notice.show { display: block; }
+    .notice.info { background: #f6eee7; color: #654638; }
+    .notice.success { background: #e8eee7; color: #31533a; }
+    .notice.error { background: #f9e9e8; color: #8b2f2a; }
+    .below { padding: 0 0 70px; }
+    .below-inner { display: flex; justify-content: space-between; gap: 25px; align-items: center; padding: 25px 28px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,253,250,.55); }
+    .below-inner strong { display: block; font-family: Georgia, serif; font-size: 21px; font-weight: 500; }
+    .below-inner span { color: var(--muted); font-size: 13px; }
+    .below-tag { color: var(--wine) !important; font-size: 12px !important; font-weight: 800; white-space: nowrap; }
+    footer { padding: 22px 0 30px; border-top: 1px solid var(--line); color: #877a76; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 44px; }
+      .visual { min-height: 430px; order: 2; }
+      .form-card { width: min(100%, 560px); order: 3; }
+      .hero-copy { order: 1; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      header { padding: 18px 0; }
+      .hero { padding: 35px 0 58px; gap: 28px; }
+      h1 { font-size: clamp(43px, 13vw, 60px); }
+      .visual { min-height: 365px; }
+      .book { width: 235px; min-height: 315px; padding: 24px; }
+      .book-copy strong { font-size: 35px; }
+      .stamp { right: -1%; bottom: 3%; width: 75px; height: 75px; font-size: 11px; }
+      .below-inner { align-items: flex-start; flex-direction: column; padding: 22px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="#top" aria-label="casal TK shop, início">
+      <span class="brand-mark" aria-hidden="true">TK</span>
+      <span class="brand-name">casal TK <span style="font-weight:500;color:#887a75">shop</span></span>
+    </a>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="headline">
+      <div class="hero-copy">
+        <p class="eyebrow">Um presente do casal TK</p>
+        <h1 id="headline">Uma leitura para levar com <em>você.</em></h1>
+        <p class="intro">Cadastre-se para receber gratuitamente o ebook do casal TK e conhecer de perto os próximos conteúdos e projetos.</p>
+        <ul class="points">
+          <li><span class="check" aria-hidden="true">✓</span><span>Receba o material gratuito diretamente no seu e-mail.</span></li>
+          <li><span class="check" aria-hidden="true">✓</span><span>Fique por dentro dos novos ebooks, aulas e experiências do casal.</span></li>
+          <li><span class="check" aria-hidden="true">✓</span><span>Você escolhe se também quer receber novidades pelo WhatsApp.</span></li>
+        </ul>
+      </div>
+
+      <div class="visual" aria-label="Prévia ilustrativa da capa do ebook">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="book" aria-hidden="true">
+          <div class="book-top">casal TK · conteúdo gratuito</div>
+          <div class="book-copy">
+            <small>ebook para você</small>
+            <strong>Seu próximo capítulo</strong>
+            <span>O título e a promessa do ebook entram aqui quando o material for definido.</span>
+          </div>
+          <div class="book-bottom">casal TK shop</div>
+        </div>
+        <div class="stamp" aria-hidden="true">leitura<br>gratuita</div>
+      </div>
+
+      <div class="form-card" id="cadastro">
+        <h2>Quero receber o ebook</h2>
+        <p>Preencha seus dados. O link de acesso será enviado para o seu e-mail.</p>
+        <form id="lead-form">
+          <label class="field" for="name">Seu nome
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar você?" required>
+          </label>
+          <label class="field" for="email">Seu melhor e-mail
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required>
+          </label>
+          <label class="field" for="phone">WhatsApp com DDD
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 99999-9999" required>
+          </label>
+          <div class="consents">
+            <label class="consent"><input name="ebook_consent" type="checkbox" required><span>Autorizo o uso dos meus dados para receber este ebook e informações necessárias sobre o acesso. <a href="#privacidade">Veja a política de privacidade.</a></span></label>
+            <label class="consent"><input name="marketing_consent" type="checkbox"><span>Também quero receber novidades e ofertas do casal TK por e-mail ou WhatsApp. Posso cancelar quando quiser.</span></label>
+          </div>
+          <div id="turnstile-container"></div>
+          <label class="honeypot" aria-hidden="true">Deixe este campo vazio<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          <button id="submit-button" type="submit">Enviar meu ebook gratuito</button>
+        </form>
+        <p class="secure-note">Seus dados serão tratados conforme a política de privacidade.</p>
+        <div id="form-notice" class="notice" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="below" aria-label="Sobre o casal TK shop">
+      <div class="below-inner">
+        <div><strong>Conteúdo para acompanhar seus próximos passos.</strong><span> Ebooks, comunidade, curso e mentoria em um só lugar.</span></div>
+        <span class="below-tag">EM BREVE · CASAL TK SHOP</span>
+      </div>
+    </section>
+  </main>
+
+  <footer id="privacidade">
+    <div class="wrap footer-inner"><span>© <span id="year"></span> casal TK shop</span><span>Política de privacidade · inserir link da versão final antes da publicação</span></div>
+  </footer>
+
+  <script>
+    // A rota privada encaminha os dados ao Apps Script depois de validar o Turnstile.
+    // Configure também TURNSTILE_SITE_KEY no HTML e os segredos no servidor.
+    const LEAD_ENDPOINT = "/api/leads";
+    const TURNSTILE_SITE_KEY = "";
+    let turnstileWidgetId = null;
+    if (TURNSTILE_SITE_KEY) {
+      const captchaScript = document.createElement("script");
+      captchaScript.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      captchaScript.async = true;
+      captchaScript.defer = true;
+      captchaScript.onload = () => {
+        turnstileWidgetId = window.turnstile.render("#turnstile-container", { sitekey: TURNSTILE_SITE_KEY });
+      };
+      document.head.appendChild(captchaScript);
+    }
+    const form = document.querySelector("#lead-form");
+    const button = document.querySelector("#submit-button");
+    const notice = document.querySelector("#form-notice");
+    document.querySelector("#year").textContent = new Date().getFullYear();
+
+    function showNotice(message, type) {
+      notice.textContent = message;
+      notice.className = `notice show ${type}`;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      if (!TURNSTILE_SITE_KEY || !window.turnstile || turnstileWidgetId === null) {
+        showNotice("A proteção contra spam e a automação ainda precisam ser configuradas. Nenhum dado foi enviado.", "info");
+        return;
+      }
+      const turnstileToken = window.turnstile.getResponse(turnstileWidgetId);
+      if (!turnstileToken) {
+        showNotice("Confirme a verificação de segurança antes de enviar.", "info");
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Enviando…";
+      notice.className = "notice";
+      const data = new FormData(form);
+      const payload = {
+        name: String(data.get("name") || "").trim(),
+        email: String(data.get("email") || "").trim(),
+        phone: String(data.get("phone") || "").trim(),
+        ebookConsent: data.get("ebook_consent") === "on",
+        marketingConsent: data.get("marketing_consent") === "on",
+        turnstileToken,
+        website: String(data.get("website") || ""),
+        source: "landing-page-ebook",
+        submittedAt: new Date().toISOString()
+      };
+
+      try {
+        const response = await fetch(LEAD_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.message || "Falha no envio");
+        form.reset();
+        window.turnstile.reset(turnstileWidgetId);
+        showNotice("Cadastro recebido! Verifique seu e-mail para acessar o ebook.", "success");
+      } catch (error) {
+        if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
+        showNotice(error.message || "Não foi possível concluir o cadastro agora. Tente novamente em instantes.", "error");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Enviar meu ebook gratuito";
+      }
+    });
+  </script>
+</body>
+</html>
