@@ -76,7 +76,9 @@ module.exports = async function handler(req, res) {
   }
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8000);
+  // Apps Script can take a few seconds to start, open Drive/Sheets and send an
+  // attachment. Keep enough time for a cold start before aborting the request.
+  const timeout = setTimeout(() => controller.abort(), 25000);
   try {
     const verifyBody = new URLSearchParams({
       secret: process.env.TURNSTILE_SECRET_KEY,
@@ -112,14 +114,19 @@ module.exports = async function handler(req, res) {
       }),
       signal: controller.signal
     });
-    if (!appsScriptResponse.ok) return send(res, 502, { message: "Não foi possível concluir o cadastro agora. Tente novamente." });
+    if (!appsScriptResponse.ok) return send(res, 502, { message: "O Google não respondeu corretamente. Tente novamente." });
     const automationResult = await appsScriptResponse.json().catch(() => ({}));
     if (automationResult.ok !== true) {
-      return send(res, 502, { message: "Não foi possível concluir o cadastro agora. Tente novamente." });
+      return send(res, 502, {
+        message: automationResult.message || "Não foi possível concluir o cadastro agora. Tente novamente."
+      });
     }
     return send(res, 202, { message: "Cadastro recebido e ebook enviado." });
-  } catch {
-    return send(res, 502, { message: "Não foi possível concluir o cadastro agora. Tente novamente." });
+  } catch (error) {
+    const message = error && error.name === "AbortError"
+      ? "A automação demorou mais que o esperado. Tente novamente."
+      : "Não foi possível concluir o cadastro agora. Tente novamente.";
+    return send(res, 502, { message });
   } finally {
     clearTimeout(timeout);
   }
