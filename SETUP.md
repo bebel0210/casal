@@ -29,8 +29,9 @@ O código agora está apontado para os IDs fornecidos. Como essa planilha já é
 
 - Na Vercel, configure `GOOGLE_APPS_SCRIPT_URL` com a URL `/exec`.
 - Configure `GOOGLE_APPS_SCRIPT_SHARED_SECRET` com o mesmo valor salvo em `SHARED_SECRET` no Apps Script.
-- Configure `TURNSTILE_SECRET_KEY`, `TURNSTILE_HOSTNAME` e `ALLOWED_ORIGIN`.
-- No `index.html`, preencha `TURNSTILE_SITE_KEY` com a chave pública do site Turnstile.
+- Configure `TURNSTILE_SITE_KEY` com a chave pública (Site Key) do Turnstile.
+- Configure `TURNSTILE_SECRET_KEY` com a chave privada (Secret Key), além de `TURNSTILE_HOSTNAME` e `ALLOWED_ORIGIN`.
+- A função `/api/leads` fornece a chave pública ao HTML; não é preciso editar o `index.html` para colocá-la.
 - Publique novamente a landing page e a função `/api/leads`.
 
 Não coloque `SHARED_SECRET`, `PDF_FILE_ID` ou a URL do Web App no HTML público. Não envie a chave secreta pelo chat.

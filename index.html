@@ -181,21 +181,11 @@
   </footer>
 
   <script>
-    // A rota privada encaminha os dados ao Apps Script depois de validar o Turnstile.
-    // Configure também TURNSTILE_SITE_KEY no HTML e os segredos no servidor.
+    // A chave pública do Turnstile vem da Vercel; segredos nunca vão para o HTML.
     const LEAD_ENDPOINT = "/api/leads";
-    const TURNSTILE_SITE_KEY = "";
     let turnstileWidgetId = null;
-    if (TURNSTILE_SITE_KEY) {
-      const captchaScript = document.createElement("script");
-      captchaScript.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-      captchaScript.async = true;
-      captchaScript.defer = true;
-      captchaScript.onload = () => {
-        turnstileWidgetId = window.turnstile.render("#turnstile-container", { sitekey: TURNSTILE_SITE_KEY });
-      };
-      document.head.appendChild(captchaScript);
-    }
+    let turnstileReady = false;
+    let turnstileSiteKey = "";
     const form = document.querySelector("#lead-form");
     const button = document.querySelector("#submit-button");
     const notice = document.querySelector("#form-notice");
@@ -206,12 +196,39 @@
       notice.className = `notice show ${type}`;
     }
 
+    async function setupTurnstile() {
+      try {
+        const response = await fetch(LEAD_ENDPOINT, { headers: { "Accept": "application/json" } });
+        const config = await response.json().catch(() => ({}));
+        if (!response.ok || !config.turnstileSiteKey) return;
+        turnstileSiteKey = config.turnstileSiteKey;
+        const captchaScript = document.createElement("script");
+        captchaScript.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+        captchaScript.async = true;
+        captchaScript.defer = true;
+        captchaScript.onload = () => {
+          if (!window.turnstile) return;
+          try {
+            turnstileWidgetId = window.turnstile.render("#turnstile-container", { sitekey: turnstileSiteKey });
+            turnstileReady = true;
+          } catch (_) {
+            turnstileReady = false;
+          }
+        };
+        captchaScript.onerror = () => { turnstileReady = false; };
+        document.head.appendChild(captchaScript);
+      } catch (_) {
+        turnstileReady = false;
+      }
+    }
+    setupTurnstile();
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
 
-      if (!TURNSTILE_SITE_KEY || !window.turnstile || turnstileWidgetId === null) {
-        showNotice("A proteção contra spam e a automação ainda precisam ser configuradas. Nenhum dado foi enviado.", "info");
+      if (!turnstileReady || !turnstileSiteKey || !window.turnstile || turnstileWidgetId === null) {
+        showNotice("A chave pública TURNSTILE_SITE_KEY ainda não foi carregada pela Vercel. Confira essa variável e publique novamente. Nenhum dado foi enviado.", "info");
         return;
       }
       const turnstileToken = window.turnstile.getResponse(turnstileWidgetId);

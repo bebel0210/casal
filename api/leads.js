@@ -2,6 +2,7 @@
 // Required server environment variables:
 //   GOOGLE_APPS_SCRIPT_URL              Deployed Apps Script web app URL.
 //   GOOGLE_APPS_SCRIPT_SHARED_SECRET   Same value as Apps Script SHARED_SECRET.
+//   TURNSTILE_SITE_KEY                 Cloudflare Turnstile public site key.
 //   TURNSTILE_SECRET_KEY               Cloudflare Turnstile secret key.
 // Optional:
 //   TURNSTILE_HOSTNAME      Expected host, e.g. ebook.casaltkshop.com.br.
@@ -14,6 +15,12 @@ function send(res, status, body) {
 }
 
 module.exports = async function handler(req, res) {
+  if (req.method === "GET") {
+    const siteKey = process.env.TURNSTILE_SITE_KEY;
+    if (!siteKey) return send(res, 503, { message: "Turnstile não configurado." });
+    return send(res, 200, { turnstileSiteKey: siteKey });
+  }
+
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return send(res, 405, { message: "Método não permitido." });
